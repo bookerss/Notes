@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+        function Foo() {
+            getName = function () {
+                alert(1)
+            }
+            return this
+        }
+        Foo.getName = function () {
+            alert(2);
+        }
+        Foo.prototype.getName = function () {
+            alert(3)
+        }
+
+        //   函数表达式:当被执行时进行赋值
+        var getName = function () {
+            alert(4)
+        }
+        //   函数声明：会被提示
+        function getName() {
+            alert(5);
+        };
+        // 2
+        Foo.getName();
+        //4：函数声明方式会让函数提升到最前面。函数表达式则先提示变量,当被执行赋值。
+        // 本例中 5的函数体被提升 然后在4的表达式的定义后 执行的话就会赋值4的函数体进入
+        getName();
+        // 1
+        // Foo()指向了this就是window 也就是window.getName()
+        // getName()最开始是alert(4);然后FOO()执行将getName修改成了1
+        // 所以本题是1
+        Foo().getName();
+        // 1 ：window的指向被foo（）改变 如果不执行Foo()就是4
+        getName();
+        //------------------------------ 
+
+        //------------------------------    
+        //    2 3 3
+        new Foo.getName();
+        // new有参列表 =》 成员访问=》函数调用
+        new Foo().getName();
+        new new Foo().getName();
+    </script>
+</body>
+
+</html>

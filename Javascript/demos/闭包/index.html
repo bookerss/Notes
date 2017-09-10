@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+<script>
+    var j = 100;
+   function test() {
+        var j;
+        j = 10; //在作用域里面是操作内部新建的j
+        //  
+        console.log(j)
+    }
+    test()
+    console.log(j)
+//  在函数签名加入~号 会将定义的函数当成一个表达式 
+  ~function test1(){
+      console.log('定义的函数被当成了test的表达式 相当于使用函数本身')
+  }()
+
+// call
+
+function test2(num){
+    // 
+    alert(1)
+   var _w = 100,_h = 200;
+   _w++;
+   console.log(_w)
+   this.fn=function(){
+       console.log(_w,_h)
+   }
+    this.fn=function(){
+        _w = 300*num
+       console.log(_w,_h)
+   }
+}
+var obj = {};
+// 注意在使用call的时候 test2是会被执行一次的 call其实就是降test2 从新new给了obj；
+
+/* 
+  var obj = new Test2(2)//与test2.call(obj,2)是一样的
+//   因为在赋值的时候 理论来说就是会执行内部运算的
+*/
+test2.call(obj,2)
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>

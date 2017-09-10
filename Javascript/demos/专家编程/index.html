@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            height: 50px;
+            width: 100%;
+            background: #00c2ff;
+            line-height: 50px;
+            padding: 20px;
+            color: white
+        }
+    </style>
+    <script>
+        var car = {};
+        Object.defineProperty(car, 'doors', {
+            configurable: true,
+            enumerable: true, //是否可枚举
+            writable: true, //是否可重写
+            value: 5
+        });
+        Object.defineProperty(car, 'wheels', {
+            configurable: false,
+            enumerable: false, //是否可枚举
+            writable: false, //是否可重写
+            value: 2
+        })
+        console.log(car);
+        //  configurable 配置对象属性是否可删除和重新赋值  一种防御性编程;
+        // Object.keys 不可枚举的是不能获取的;
+        console.log('获取对象的属性名', Object.getOwnPropertyNames(car), Object.keys(car));
+        console.log('指定属性是否可以枚举', car.propertyIsEnumerable('wheels'));
+        //   类名用帕斯卡拼写法 既每个单词头部都大写；
+    </script>
+</head>
+
+<body>
+    <h2 class="title">Javascript专家编程</h2>
+    <div id="app">
+
+    </div>
+</body>
+
+</html>

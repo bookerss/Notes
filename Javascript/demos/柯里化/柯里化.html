@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <script>
+        /* 
+         * 函数柯里化:将多参数函数变成单参数函数 -
+         * 函数柯里化，是固定部分参数，返回一个接受剩余参数的函数，也称为部分计算函数，目的是为了缩小适用范围，创建一个针对性更强的函数。
+         * 个人理解：柯里化帮助我们将本来需要传入多个参数的函数变成了单一参数的函数 而通过闭包将需要传入的参数传入
+         */
+        var currying = function (fn) {
+            /* 
+             * [].slice.call 将arguments作为slice的this执行 将arguments变成了一个数组 然后获取slice的参数1 就会返回第一个参数
+             */
+            var args = [].slice.call(arguments, 1);
+            console.log('args',args)
+           
+            return function () {
+                // 把第一个参数和其他参数合并成一个数组
+                var newArgs = args.concat([].slice.call(arguments));
+                console.log('newArgs',newArgs)
+               /* 特别注意  在使用call或apply的时候 当第一个参数传入的是null或者undefinde 那么this指向的是全局 */
+                return fn.apply(null, newArgs);
+            };
+        };
+
+        // 下为官员如何搞定7个老婆的测试
+        // 获得合法老婆
+        var getWife = currying(function () {
+           
+            var allWife = [].slice.call(arguments);
+             console.log('fffff',allWife)
+            // allwife 就是所有的老婆的，包括暗渡陈仓进来的老婆
+            console.log(allWife.join(";"));
+        }, "合法老婆");
+
+        // 获得其他6个老婆
+        getWife("大老婆", "小老婆", "俏老婆", "刁蛮老婆", "乖老婆", "送上门老婆");
+
+        // 换一批老婆
+        getWife("超越韦小宝的老婆");
+
+
+
+
+
+        
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
