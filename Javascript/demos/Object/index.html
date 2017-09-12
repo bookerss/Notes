@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="css/style.css" rel="stylesheet"> -->
+    </head>
+    <body>
+      <script>
+        //   定义一个对象 如何让属性互相访问
+        let Obj = {
+            index:0,
+            setindex:function(){
+                 return this.index+9;
+            },
+        }
+     console.log(Obj.setindex())
+    Obj.full=Obj.index+111;
+    console.log(Obj)
+      </script>
+    </body>
+</html>
