@@ -23,43 +23,85 @@
         }
     </style>
     <script>
-   
     </script>
 </head>
 
 <body>
     <h2 class="title">Javascript专家编程</h2>
     <div id="app">
-    <div class="session_1">
-        <!-- 对象 -->
-        <script>
-                 var car = {};
-        Object.defineProperty(car, 'doors', {
-            configurable: true,
-            enumerable: true, //是否可枚举
-            writable: true, //是否可重写
-            value: 5
-        });
-        Object.defineProperty(car, 'wheels', {
-            configurable: false,//对象师傅可以删除和重复赋值 防御性编程
-            enumerable: false, //是否可枚举
-            writable: false, //是否可重写
-            value: 2
-        })
-        console.log(car);
-        //  configurable 配置对象属性是否可删除和重新赋值  一种防御性编程;
-        // Object.keys 不可枚举的是不能获取的;
-        console.log('获取对象的属性名', Object.getOwnPropertyNames(car), Object.keys(car));
-        console.log('指定属性是否可以枚举', car.propertyIsEnumerable('wheels'));
-        //   类名用帕斯卡拼写法 既每个单词头部都大写； 
-        </script>
-    </div>
-    <div class="session_2">
-        <!-- 对象 -->
-        <script>
+        <div class="session_1">
+            <!-- 对象 -->
+            <script>
+                var car = {};
+                Object.defineProperty(car, 'doors', {
+                    configurable: true,
+                    enumerable: true, //是否可枚举
+                    writable: true, //是否可重写
+                    value: 5
+                });
+                Object.defineProperty(car, 'wheels', {
+                    configurable: false, //对象师傅可以删除和重复赋值 防御性编程
+                    enumerable: false, //是否可枚举
+                    writable: false, //是否可重写
+                    value: 2
+                })
+                console.log(car);
+                //  configurable 配置对象属性是否可删除和重新赋值  一种防御性编程;
+                // Object.keys 不可枚举的是不能获取的;
+                console.log('获取对象的属性名', Object.getOwnPropertyNames(car), Object.keys(car));
+                console.log('指定属性是否可以枚举', car.propertyIsEnumerable('wheels'));
+                //   类名用帕斯卡拼写法 既每个单词头部都大写； 
+
+                console.log('获取属性特性既该属性的所有定义特性', Object.getOwnPropertyDescriptor(car, 'doors'));
+                console.log('返回所有属性名，包括不可枚举的', Object.getOwnPropertyNames(car, 'doors'));
+                var ObjectgetPortotypeOf = {};
+                console.log('返回对象的原型', Object.getPrototypeOf(ObjectgetPortotypeOf))
+                //    call-apply :改变this的指向 前者使用字面量做参数 后者使用数组做参数
+                var friend={
+                    warmth:0,
+                    useSweater:function(level){
+                        this.warmth = level
+                    }
+                };
+                var me = {
+                    warmth:0,
+                    isWarm : function(){
+                        return this.warmth === 100;
+
+                    }
+                };
+                try {
+                  me.useSweater(100)
+                }catch(e) {
+                    console.log(e.message);
+                }
+                friend .useSweater.call(me,100);
+                friend.useWseate.call(me,100);
+                
+                console.log(me.isWarm);
+                
+                me.warmth = 0;
+                console.log(me.isWarm())
+                friend.useSweater.apply(me,[100]);
+                console.log(me.isWarm())
+
+// 对象字面量：就是使用大括号定义的对象
+ 
+            </script>
+        </div>
+        <div class="session_2">
+            <!-- 函数 -->
            
-        </script>
-    </div>
+          
+
+
+
+
+
+
+            <script>
+            </script>
+        </div>
     </div>
 </body>
 
