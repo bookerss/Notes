@@ -10,19 +10,30 @@
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         .title {
-            height: 50px;
+            height: 100%;
             width: 100%;
             background: #00c2ff;
             line-height: 50px;
             padding: 20px;
-            color: white
+            color: white;
         }
     </style>
     <script>
-        var car = {};
+   
+    </script>
+</head>
+
+<body>
+    <h2 class="title">Javascript专家编程</h2>
+    <div id="app">
+    <div class="session_1">
+        <!-- 对象 -->
+        <script>
+                 var car = {};
         Object.defineProperty(car, 'doors', {
             configurable: true,
             enumerable: true, //是否可枚举
@@ -30,7 +41,7 @@
             value: 5
         });
         Object.defineProperty(car, 'wheels', {
-            configurable: false,
+            configurable: false,//对象师傅可以删除和重复赋值 防御性编程
             enumerable: false, //是否可枚举
             writable: false, //是否可重写
             value: 2
@@ -40,14 +51,15 @@
         // Object.keys 不可枚举的是不能获取的;
         console.log('获取对象的属性名', Object.getOwnPropertyNames(car), Object.keys(car));
         console.log('指定属性是否可以枚举', car.propertyIsEnumerable('wheels'));
-        //   类名用帕斯卡拼写法 既每个单词头部都大写；
-    </script>
-</head>
-
-<body>
-    <h2 class="title">Javascript专家编程</h2>
-    <div id="app">
-
+        //   类名用帕斯卡拼写法 既每个单词头部都大写； 
+        </script>
+    </div>
+    <div class="session_2">
+        <!-- 对象 -->
+        <script>
+           
+        </script>
+    </div>
     </div>
 </body>
 
