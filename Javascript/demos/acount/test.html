@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+</head>
+<script>
+       var obj = [
+               {isParent:true,pid:0,children:null,id:1},
+               {isParent:false,pid:1,children:null,id:2},
+               {isParent:false,pid:1,children:null,id:3},
+               {isParent:false,pid:0,children:null,id:4},
+               {isParent:false,pid:6,children:null,id:5},
+               {isParent:true,pid:0,children:null,id:6},
+               {isParent:true,pid:0,children:null,id:7},
+               {isParent:true,pid:7,children:null,id:8},
+               {isParent:true,pid:7,children:null,id:9},
+               {isParent:false,pid:8,children:null,id:10},
+               {isParent:false,pid:9,children:null,id:11},
+           ];
+        
+            function dataAcount(data, pid) {
+                var result = [],
+                    temp;
+                for (var i in data) {
+                    if (data[i].pid == pid) {
+                    
+                        result.push(data[i]);
+                        // pid===7 &&(console.log(pid,result));
+                        temp = dataAcount(data, data[i].id);
+                        if (temp.length > 0) {
+                            data[i].children = temp;
+                        }
+                    }
+                }
+                // console.log('result',result)
+                return result;
+            }
+       
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>
